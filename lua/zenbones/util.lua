@@ -56,50 +56,51 @@ function M.palette_extend(p, base_bg)
 	local hsluv = lush.hsluv
 	if base_bg == "light" then
 		p = vim.tbl_extend("keep", p, {
-			bg = hsluv(39, 12, 94), -- sand
-			fg = hsluv(230, 30, 22), -- stone
-			leaf = hsluv(112, 72, 42),
-			water = hsluv(236, 84, 40),
-			rose = hsluv(4, 70, 40),
-			wood = hsluv(26, 80, 40),
-			blossom = hsluv(318, 42, 42),
-			sky = hsluv(204, 80, 53),
+			-- Base colors transformed to muted pink variants
+			bg = hsluv(330, 10, 92),  -- very light muted pink background
+			fg = hsluv(330, 30, 30),  -- dark muted pink foreground
+			leaf = hsluv(330, 40, 50), -- muted pink (replacing green)
+			water = hsluv(330, 50, 55), -- slightly more saturated pink (replacing blue)
+			rose = hsluv(340, 45, 50), -- warm muted pink (replacing red)
+			wood = hsluv(330, 35, 45), -- brownish muted pink (replacing brown)
+			blossom = hsluv(320, 40, 55), -- cool muted pink (main pink)
+			sky = hsluv(330, 45, 60),  -- light muted pink (replacing blue)
 		})
 		return vim.tbl_extend("keep", p, {
 			bg1 = p.bg.sa(4).da(16),
 			bg_bright = p.bg.abs_li(3).sa(6),
 			bg_dim = p.bg.abs_da(3).de(12),
-			rose1 = p.rose.sa(20).da(16),
-			leaf1 = p.leaf.sa(20).da(16),
-			wood1 = p.wood.sa(18).da(16),
-			water1 = p.water.sa(20).da(16),
-			blossom1 = p.blossom.sa(24).da(16),
-			sky1 = p.sky.sa(20).da(16),
+			rose1 = p.rose.sa(15).da(16),
+			leaf1 = p.leaf.sa(15).da(16),
+			wood1 = p.wood.sa(12).da(16),
+			water1 = p.water.sa(15).da(16),
+			blossom1 = p.blossom.sa(15).da(16),
+			sky1 = p.sky.sa(15).da(16),
 			fg1 = p.fg.li(22),
 		})
 	elseif base_bg == "dark" then
-		-- default
+		-- Dark mode - all colors as muted pink variants
 		p = vim.tbl_extend("keep", p, {
-			bg = hsluv(39, 12, 9), -- sand
-			fg = hsluv(230, 10, 76), -- stone
-			rose = hsluv(6, 62, 60),
-			leaf = hsluv(111, 47, 61),
-			wood = hsluv(32, 47, 58),
-			water = hsluv(236, 64, 61),
-			blossom = hsluv(318, 32, 58),
-			sky = hsluv(204, 61, 64),
+			bg = hsluv(330, 10, 12),  -- very dark muted pink background
+			fg = hsluv(330, 15, 75),  -- light muted pink foreground
+			rose = hsluv(340, 35, 65), -- warm muted pink (replacing red)
+			leaf = hsluv(330, 35, 65), -- muted pink (replacing green)
+			wood = hsluv(330, 30, 60), -- brownish muted pink (replacing brown)
+			water = hsluv(330, 40, 70), -- slightly more saturated pink (replacing blue)
+			blossom = hsluv(320, 35, 70), -- cool muted pink (main pink)
+			sky = hsluv(330, 35, 72),  -- light muted pink (replacing blue)
 		})
 		-- extended
 		return vim.tbl_extend("keep", p, {
 			bg1 = p.bg.sa(4).li(16),
 			bg_stark = p.bg.abs_da(3).sa(8),
 			bg_warm = p.bg.abs_li(3).de(12),
-			rose1 = p.rose.sa(20).li(16),
-			leaf1 = p.leaf.sa(20).li(16),
-			wood1 = p.wood.sa(18).li(16),
-			water1 = p.water.sa(20).li(16),
-			blossom1 = p.blossom.sa(24).li(16),
-			sky1 = p.sky.sa(20).li(16),
+			rose1 = p.rose.sa(15).li(16),
+			leaf1 = p.leaf.sa(15).li(16),
+			wood1 = p.wood.sa(12).li(16),
+			water1 = p.water.sa(15).li(16),
+			blossom1 = p.blossom.sa(15).li(16),
+			sky1 = p.sky.sa(15).li(16),
 			fg1 = p.fg.da(22),
 		})
 	else
